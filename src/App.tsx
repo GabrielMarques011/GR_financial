@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/theme-context";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import "./lib/firebase";
 
 const queryClient = new QueryClient();
 
