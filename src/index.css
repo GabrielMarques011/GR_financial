@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme Colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    
+    /* Custom colors */
+    --success: 142.1 76.2% 36.3%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --danger: 0 84.2% 60.2%;
+    --danger-foreground: 210 40% 98%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Theme Colors */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 6.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    
+    /* Custom colors - Dark mode */
+    --success: 142.1 70.6% 45.3%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --danger: 0 62.8% 50.6%;
+    --danger-foreground: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* Animações */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes number {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-number {
+  animation: number 0.5s ease-out;
+}
+
+/* Componentes personalizados */
+.financial-card {
+  @apply bg-card rounded-2xl shadow-md border border-border p-6 transition-all duration-300;
+}
+
+.input-financial {
+  @apply w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  @apply transition-all duration-200;
+}
+
+.btn-success {
+  @apply bg-gradient-to-br from-success to-success/90 text-success-foreground;
+  @apply px-6 py-2.5 rounded-lg font-medium shadow-md;
+  @apply hover:shadow-lg hover:scale-105 transition-all duration-200;
+}
+
+.btn-danger {
+  @apply bg-gradient-to-br from-danger to-danger/90 text-danger-foreground;
+  @apply px-6 py-2.5 rounded-lg font-medium shadow-md;
+  @apply hover:shadow-lg hover:scale-105 transition-all duration-200;
+}
+
+.badge-danger {
+  @apply px-2 py-0.5 rounded-full bg-danger/20 text-danger text-xs font-medium;
+}
+
+/* Stat Cards */
+.stat-card {
+  @apply financial-card;
+}
+
+.stat-card-primary {
+  @apply hover:border-primary/50;
+}
+
+.stat-card-success {
+  @apply hover:border-success/50;
+}
+
+.stat-card-danger {
+  @apply hover:border-danger/50;
+}
+
+.stat-card-warning {
+  @apply hover:border-warning/50;
+}
+
+/* Scrollbar customizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted/30 rounded-lg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-lg;
+  @apply hover:bg-muted-foreground/50;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-slate-800/30;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-slate-600/50;
+  @apply hover:bg-slate-500/70;
+}
