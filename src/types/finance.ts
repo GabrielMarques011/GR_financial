@@ -9,6 +9,7 @@ export interface Debt {
   value: number;
   category?: string;
   createdAt: string;
+  isPaid: boolean;
 }
 
 export interface Savings {

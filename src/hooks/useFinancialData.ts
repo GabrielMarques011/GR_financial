@@ -61,6 +61,7 @@ export function useFinancialData() {
         value,
         category,
         createdAt: new Date().toISOString(),
+        isPaid: false,
       };
 
       await saveData({
@@ -77,6 +78,19 @@ export function useFinancialData() {
       await saveData({
         ...data,
         debts: data.debts.filter((debt) => debt.id !== id),
+      });
+    },
+    [data]
+  );
+
+  // ✨ ADICIONAR - Toggle debt paid status
+  const toggleDebtPaid = useCallback(
+    async (id: string) => {
+      await saveData({
+        ...data,
+        debts: data.debts.map((debt) =>
+          debt.id === id ? { ...debt, isPaid: !debt.isPaid } : debt
+        ),
       });
     },
     [data]
@@ -136,6 +150,7 @@ export function useFinancialData() {
     updateSalaries,
     addDebt,
     removeDebt,
+    toggleDebtPaid,
     addToSavings,
     withdrawFromSavings,
     totalSalaries,

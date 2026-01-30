@@ -17,6 +17,7 @@ const Index = () => {
     withdrawFromSavings,
     totalSalaries,
     totalDebts,
+    toggleDebtPaid,
     totalSavings,
     balance,
   } = useFinancialData();
@@ -95,6 +96,7 @@ const Index = () => {
               totalDebts={totalDebts}
               onAddDebt={addDebt}
               onRemoveDebt={removeDebt}
+              onTogglePaid={toggleDebtPaid}
             />
           </div>
         </div>
