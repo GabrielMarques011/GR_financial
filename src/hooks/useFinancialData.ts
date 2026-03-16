@@ -20,12 +20,15 @@ export function useFinancialData() {
   useEffect(() => {
     const unsubscribe = onSnapshot(docRef, async (snapshot) => {
       if (snapshot.exists()) {
-        setData(snapshot.data() as FinancialData);
+        setData({
+          ...defaultFinancialData,
+          ...snapshot.data(),
+        });
       } else {
-        // First time: create document
         await setDoc(docRef, defaultFinancialData);
         setData(defaultFinancialData);
       }
+
       setIsLoaded(true);
     });
 
